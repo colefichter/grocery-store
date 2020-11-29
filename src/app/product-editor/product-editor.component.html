@@ -1,0 +1,44 @@
+<h3>Add/Edit a Product</h3>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmitForm()">
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" />
+      <mat-hint>Enter the product name</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Price</mat-label>
+      <input matInput placeholder="Price" formControlName="price" />
+      <mat-hint>Enter the product price</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Quantity</mat-label>
+      <input matInput placeholder="Quantity" formControlName="quantity" />
+      <mat-hint>Enter the product quantity</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Image URL</mat-label>
+      <input matInput placeholder="Image URL" formControlName="imageUrl" />
+      <mat-hint>Enter the product image URL</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!productForm.valid"
+  >
+    Submit
+  </button>
+
+  <p>Form Status: {{ productForm.status }}</p>
+</form>
+<a mat-stroked-button routerLink="/">Back</a>

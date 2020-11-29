@@ -1,0 +1,24 @@
+<h3>My Cart</h3>
+<div class="items">
+  <div *ngIf="(entries$ | async).length > 0" class="list">
+    <p>The following items are in your cart:</p>
+    <ul>
+      <li *ngFor="let entry of entries$ | async">
+        <span
+          >{{ entry.quantity }} {{ entry.product.name }} @ ${{
+            entry.product.price
+          }}
+          = ${{ entry.lineTotal }}</span
+        >
+        <button mat-stroked-button (click)="removeFromCart(entry.product)">
+          Remove
+        </button>
+      </li>
+    </ul>
+    <div class="subtotal">Subtotal: ${{ totalCost$ | async }}</div>
+    <button mat-raised-button (click)="checkout()">Checkout</button>
+  </div>
+  <div class="no-data" *ngIf="(entries$ | async).length === 0">
+    Click the 'Add to Cart' button on a product's detail page to get started.
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div *ngIf="product">
+  <h3>
+    {{ product.name }}
+    <span class="price">${{ product.price }}</span>
+    <span class="out-of-stock" *ngIf="product.quantity === 0"
+      >&nbsp;Temporarily out of stock!</span
+    >
+  </h3>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToCart()"
+      [disabled]="product.quantity === 0"
+    >
+      Add to Cart</button
+    >&nbsp;
+    <button mat-raised-button (click)="removeFromCart()">
+      Remove from Cart
+    </button>
+    <br />
+  </div>
+  <div>
+    <img
+      *ngIf="!product.imageUrl"
+      src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg"
+    />
+    <img *ngIf="product.imageUrl" src="{{ product.imageUrl }}" /><br />
+    <span class="quantity">{{ product.quantity }} left in stock</span>
+  </div>
+</div>
+<a mat-stroked-button routerLink="/">Back</a>

@@ -1,0 +1,26 @@
+<h2>Products</h2>
+<a routerLink="/product/new">Add New Product</a>
+
+<mat-list>
+  <mat-list-item *ngFor="let p of products$ | async">
+    <img
+      matListAvatar
+      *ngIf="!p.imageUrl"
+      src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg"
+    />
+    <img matListAvatar *ngIf="p.imageUrl" src="{{ p.imageUrl }}" />
+
+    <h3 matLine>
+      <a routerLink="/product/{{ p.id }}">{{ p.name }}</a>
+    </h3>
+    <p matLine>
+      <span class="price">${{ p.price }}</span>
+    </p>
+    <p matLine>
+      <span class="quantity">{{ p.quantity }} in stock</span>
+    </p>
+    <p matLine>
+      <a routerLink="/product/{{ p.id }}/edit">Edit...</a>
+    </p>
+  </mat-list-item>
+</mat-list>
